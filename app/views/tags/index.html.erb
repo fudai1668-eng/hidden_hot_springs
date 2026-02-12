@@ -1,0 +1,10 @@
+<h1>Hidden_hot_springs</h1>
+<h3>一覧ページ</h3>
+<%= link_to "新規投稿へ", new_tag_path %>
+<div class="tweets-container">
+  <% @tags.each do |t| %>
+    <div class="tweet">
+      <%= t.name %>
+    </div>
+  <% end %>
+</div>

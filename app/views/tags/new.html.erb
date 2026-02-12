@@ -1,0 +1,11 @@
+<h1>Hidden_hot_springs </h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @tag do |f| %>
+    <div class="field">
+    <%= f.label :Tag %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", tags_path %>

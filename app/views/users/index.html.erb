@@ -1,0 +1,12 @@
+<h1>Hidden_hot_springs</h1>
+<h3>一覧ページ</h3>
+<%= link_to "新規投稿へ", new_user_path %>
+<div class="tweets-container">
+  <% @users.each do |t| %>
+    <div class="tweet">
+      <%= t.name %>
+      <%= t.age %>
+      <%= t.prefecture %>
+    </div>
+  <% end %>
+</div>

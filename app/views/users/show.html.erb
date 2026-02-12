@@ -1,0 +1,52 @@
+<div class="mypage-container">
+
+  <h1 class="site-title">全国温泉紹介サイト</h1>
+  <p class="subtitle">あなたの投稿</p>
+
+  <div class="tweet-list">
+    <% if @user.tweets.any? %>
+      <% @user.tweets.each do |t| %>
+        <div class="tweet-card">
+          <p class="tweet-user"><%= t.user.name %></p>
+
+          <% if t.respond_to?(:hot_springs) %>
+            <p><strong>温泉名：</strong><%= t.hot_springs %></p>
+          <% end %>
+
+          <% if t.respond_to?(:place) %>
+            <p><strong>場所：</strong><%= t.place %></p>
+          <% end %>
+
+          <% if t.respond_to?(:explain) %>
+            <p><strong>説明：</strong><%= t.explain %></p>
+          <% end %>
+
+          <p class="tweet-date">
+            投稿日：<%= t.created_at.strftime("%Y/%m/%d") %>
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだ投稿がありません。</p>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <h1 class="profile-title">Profile</h1>
+
+<div class="profile-box">
+  <p class="profile-name">名前：<%= @user.name %></p>
+  <p class="profile-email">メールアドレス：<%= @user.email %></p>
+  <p class="profile-text">プロフィール：<%= @user.profile %></p>
+
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path, class: "edit-btn" %>
+  <% end %>
+
+  <div class="back-link">
+   <%= link_to "一覧へ", tweets_list_path, class: "back-link" %>
+
+  </div>
+
+</div>

@@ -1,0 +1,233 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /* ===== ログインページ ===== */
+.login-page {
+  text-align: center;
+  padding: 70px 0;
+}
+
+/* タイトル（かなり大きく） */
+.site-title {
+  font-size: 150px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* 灰色のログインボックス */
+.login-box {
+  background-color: #e0e0e0;
+  width: 600px;
+  margin: 0 auto;
+  padding: 60px;
+  border-radius: 20px;
+  font-size: 40px;
+
+}
+
+/* 見出し */
+.login-box h2 {
+  font-size: 75px;
+  margin-bottom: 15px;
+}
+
+/* 入力欄 */
+.field input {
+  width: 100%;
+  padding: 20px;
+  margin-top: 10px;
+  font-size: 35px;
+}
+
+/* Remember me */
+.remember {
+  margin: 10px 0;
+}
+
+/* ログインボタン */
+.login-submit {
+  background-color: #5fb3e8;
+  border: none;
+  padding: 15px 30px;
+  font-size: 70px;
+  cursor: pointer;
+}
+
+/* 下のリンク */
+.login-links {
+  margin-top: 15px;
+}
+
+/* ======== ★ ここで全部まとめて調整できる ★ ======== */
+:root {
+  --show-title-size: 32px;      /* ページ上のタイトル */
+  --subtitle-size: 80px;        /* 温泉名（少し小さく調整） */
+  --info-text-size: 40px;       /* 場所・説明など（現実的なサイズに） */
+  --small-text-size: 30px;      /* 投稿日など小さい文字 */
+  --heading-size: 40px;         /* 見出し */
+}
+/* ============================================== */
+
+.show-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 大タイトル */
+.show-title {
+  font-size: var(--show-title-size);
+  margin-bottom: 20px;
+}
+
+/* 温泉名（サブタイトル） */
+.subtitle {
+  font-size: var(--subtitle-size);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* ★★★ ここを「縦並び」に変更 ★★★ */
+.show-main {
+  display: flex;
+  flex-direction: column;   /* ← 横 → 縦に変更 */
+  align-items: center;      /* ← 中央寄せ */
+  gap: 20px;                /* 画像と文字の間の余白 */
+}
+
+/* 画像エリア（位置はそのまま） */
+.show-image {
+  width: 100%;
+  text-align: center;
+}
+
+.grid-img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+}
+
+/* ★★★ テキストを写真の下に配置 ★★★ */
+.show-info {
+  width: 50%;
+  text-align: left;
+  line-height: 1.8;
+  font-size: var(--info-text-size);
+}
+
+.birth-line {
+  white-space: nowrap;   /* 改行させない */
+}
+
+
+/* ★★★ 説明だけ横幅いっぱい ★★★ */
+.explain-text {
+  width: 300%;
+  max-width: 1500px;   /* 横に伸びすぎないように上限 */
+  margin-top: 15px;
+}
+
+
+/* 投稿日だけ少し小さく */
+.post-date {
+  font-size: var(--small-text-size);
+  color: gray;
+}
+
+/* 見出し（いいねユーザー・コメント一覧など） */
+.ranking-title,
+.comment-wrapper h3 {
+  font-size: var(--heading-size);
+}
+
+/* ボタン部分 */
+.show-actions {
+  margin-top: 40px;
+}
+
+
+/* ===== いいねボタンを大きく（色は変更しない） ===== */
+.like-btn {
+  font-size: 40px;      /* 文字を大きく */
+  padding: 12px 24px;   /* ボタンの余白を大きく */
+  border-radius: 8px;   /* 角を少し丸く（任意） */
+}
+
+/* いいね取り消しボタンも同じ大きさに */
+.unlike {
+  font-size: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+/* ===== 削除ボタンを大きく（色は変更しない） ===== */
+.delete-btn {
+  font-size: 18px;
+  padding: 10px 22px;
+  border-radius: 8px;
+}
+
+.comment-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+}
+
+.comment-user {
+  font-weight: bold;
+  min-width: 150px; /* ← 少し狭くしてバランス調整 */
+  font-size: 30px;  /* ← ユーザー名を大きく */
+}
+
+.comment-content {
+  flex: 1;
+  font-size: 55px;  /* ← コメントも少し大きめ（好みでOK） */
+}
+
+.comment-delete-btn {
+  font-size: 40px;  /* ← 削除ボタンを大きく */
+  padding: 4px 8px; /* ← クリック範囲を少し広げる */
+}
+
+
+/* ===== コメント入力ボックスを大きく ===== */
+.comment-textarea {
+  width: 100%;        /* 横幅いっぱい */
+  height: 180px;      /* 高さを大きく */
+  font-size: 30px;    /* 入力文字を大きく */
+  padding: 12px;      /* 内側の余白 */
+  line-height: 1.6;
+}
+
+/* ===== コメント表示の文字を大きく ===== */
+.comment {
+  font-size: 40px;    /* 表示されるコメントの文字サイズ */
+  margin-bottom: 12px;
+}
+
+/* コメントした人の名前も少し大きく */
+.comment strong {
+  font-size: 40px;
+}
+
+/* ===== コメント送信ボタンを少し大きく ===== */
+.comment-btn {
+  font-size: 16px;
+  padding: 8px 16px;
+}
+

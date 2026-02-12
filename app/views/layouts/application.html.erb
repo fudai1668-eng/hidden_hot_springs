@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HiddenHotSprings</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+<body>
+  <header class="top-header">
+    <div class="top-nav">
+      <%= link_to "Home", root_path %>
+
+      <% if user_signed_in? %>
+        <%= form_with url: destroy_user_session_path,
+                      method: :delete,
+                      data: { turbo: false } do %>
+          <button type="submit" class="logout-btn">Logout</button>
+        <% end %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <%= yield %>
+  </main>
+
+  <footer>
+    <p>Copyright © GeekSalon All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

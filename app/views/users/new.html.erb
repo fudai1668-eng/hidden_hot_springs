@@ -1,0 +1,24 @@
+<h1>Hidden_hot_springs</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @user do |f| %>
+
+ <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age  %>
+    <%= f.number_field :age, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture %>
+    <%= f.text_field :prefecture, :size => 30 %>
+  </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", users_path %>
+

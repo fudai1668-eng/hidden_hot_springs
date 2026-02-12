@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hot: MyString
+  springs: MyString
+  place: MyString
+  birth: 1
+  explain: MyText
+  picture: MyString
+
+two:
+  hot: MyString
+  springs: MyString
+  place: MyString
+  birth: 1
+  explain: MyText
+  picture: MyString

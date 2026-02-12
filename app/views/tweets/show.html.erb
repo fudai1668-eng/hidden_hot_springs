@@ -1,0 +1,128 @@
+<div class="top-container">
+
+  <div class="show-wrapper">
+
+    <div class="show-header">
+      <h3 class="subtitle"><%= @tweet.hot_springs %></h3>
+    </div>
+
+   <div class="show-main-vertical">
+
+ <div class="show-image">
+  <% if @tweet.image.present? %>
+    <%= image_tag @tweet.image.url, class: "grid-img" %>
+  <% else %>
+    <%= image_tag "arima.png", class: "grid-img" %>
+  <% end %>
+</div>
+
+
+  <div class="show-info">
+    <p><strong>場所：</strong><%= @tweet.place %></p>
+    <p class="explain-text"><strong>誕生年：</strong><%= @tweet.birth %></p>
+    <p class="explain-text"><strong>説明：</strong><%= @tweet.explain %></p>
+    <p class="post-date">投稿日：<%= @tweet.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  </div>
+
+</div>
+
+
+    <!-- タグ表示 -->
+    <div class="tag-box">
+      <% @tweet.tags.each do |tag| %>
+        <span class="tag"><%= tag.name %></span>
+      <% end %>
+    </div>
+
+    <!-- いいねボタン -->
+    <div class="like-box">
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(@tweet) %>
+          <%= button_to "いいねを取り消す（#{@tweet.likes.count}）",
+                tweet_like_path(@tweet, @tweet.likes.find_by(user: current_user)),
+                method: :delete,
+                class: "like-btn unlike" %>
+        <% else %>
+          <%= button_to "いいね（#{@tweet.likes.count}）",
+                tweet_likes_path(@tweet),
+                method: :post,
+                class: "like-btn" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- 投稿者のみ削除ボタン -->
+    <% if user_signed_in? && current_user == @tweet.user %>
+      <div class="delete-box">
+        <%= button_to "削除する",
+              tweet_path(@tweet),
+              method: :delete,
+              data: { turbo_confirm: "本当に削除しますか？" },
+              class: "delete-btn" %>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <h2 class="ranking-title">いいねしたユーザー</h2>
+    <ul class="liked-users">
+      <% @tweet.liked_users.each do |user| %>
+        <li><%= user.email %></li>
+      <% end %>
+    </ul>
+    
+
+    <hr>
+
+   <div class="comment-wrapper">
+  
+
+  <% @comments.each do |c| %>
+    <h3>コメント一覧</h3>
+  <div class="comment-row">
+    <span class="comment-user"><%= c.user.name if c.user %></span>
+    <span class="comment-content"><%= c.content %></span>
+
+
+      
+    <% if user_signed_in? && c.user_id == current_user.id %> 
+      <%= button_to "削除する", 
+                 tweet_comment_path(@tweet, c), 
+                 method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, 
+                 class: "comment-delete-btn" %> 
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <h3>コメントする</h3>
+    <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+      <div>
+        <%= f.text_area :content, class: "comment-textarea", placeholder: "コメントを入力" %>
+      </div>
+      <div>
+        <%= f.submit "コメントする", class: "comment-btn" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>※ コメントするにはログインが必要です</p>
+  <% end %>
+</div>
+
+
+
+
+    <div class="back-link">
+  <%= link_to "一覧に戻る", tweets_list_path %>
+</div>
+
+
+  </div>
+</div>
+
+
+  
+
+  <h2 class="ranking-title">人気Tweetランキング</h2>
+
+</div>

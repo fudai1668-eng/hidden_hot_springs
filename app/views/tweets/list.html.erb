@@ -1,0 +1,33 @@
+<div class="top-container">
+
+  <h1 class="site-title">全国温泉紹介サイト</h1>
+  <p class="subtitle">一覧</p>
+
+  <div class="image-grid grid-3x5">
+
+    <% @tweets.each do |t| %>
+      <div class="grid-item">
+
+        <!-- ① 写真（クリックなし） -->
+        <% if t.image.present? %>
+          <%= image_tag t.image.url, class: "grid-img" %>
+        <% else %>
+          <%= image_tag "arima.png", class: "grid-img" %>
+        <% end %>
+
+        <!-- ② 名前（ここだけ詳細ページへのリンク） -->
+        <p class="onsen-name">
+          <%= link_to t.hot_springs, tweet_path(t) %>
+        </p>
+
+      </div>
+    <% end %>
+
+  </div>
+
+  <h2 class="ranking-title">人気Tweetランキング</h2>
+
+</div>
+
+
+
