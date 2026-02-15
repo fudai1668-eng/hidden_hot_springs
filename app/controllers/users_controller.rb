@@ -3,27 +3,28 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tweets = @user.tweets.order(created_at: :desc)
+    @comments = @user.comments.includes(:tweet).order(created_at: :desc)
   end
-  
-   def index
-        @users = User.all
-    end
 
-    def new
+  def index
+    @users = User.all
+  end
+
+  def new
     @user = User.new
   end
 
   def create
     user = User.new(user_params)
-    if user.save!
-      redirect_to :action => "index"
+    if user.save
+      redirect_to action: "index"
     else
-      redirect_to :action => "new"
+      render :new
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :age, :prefecture)
   end

@@ -166,6 +166,14 @@
   border-radius: 8px;   /* 角を少し丸く（任意） */
 }
 
+.liked-users li {
+  font-size: 35px;   /* ← 好きな大きさに変更 */
+  font-weight: bold; /* 太字にするなら */
+  margin: 8px 0;
+  list-style: none;   /* ← 黒い点を消す */
+  padding-left: 0;    /* ← 左の余白も消す */
+}
+
 /* いいね取り消しボタンも同じ大きさに */
 .unlike {
   font-size: 20px;
@@ -229,5 +237,36 @@
 .comment-btn {
   font-size: 16px;
   padding: 8px 16px;
+}
+
+.rank-number {
+  font-size: 50px;
+  font-weight: bold;
+  width: 140px;        /* ← ここで幅を固定 */
+  text-align: center;
+}
+
+.ranking-name {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.like-count {
+  font-size: 50px;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  width: 500px;     /* 横幅を固定 */
+  margin: 0 auto;   /* ← これで中央に来る */
+  margin-bottom: 10px;
+}
+
+.ranking-wrapper {
+  width: 500px;      /* 全体の横幅を固定 */
+  margin: 0 auto;    /* ← 中央寄せの最重要ポイント */
 }
 

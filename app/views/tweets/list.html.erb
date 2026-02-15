@@ -8,7 +8,6 @@
     <% @tweets.each do |t| %>
       <div class="grid-item">
 
-        <!-- ① 写真（クリックなし） -->
         <% if t.image.present? %>
           <%= image_tag t.image.url, class: "grid-img" %>
         <% else %>
@@ -25,9 +24,23 @@
 
   </div>
 
-  <h2 class="ranking-title">人気Tweetランキング</h2>
+  <h2 class="ranking-title">♨人気温泉ランキング♨</h2>
+
+<% @rank_tweets.each_with_index do |t, i| %>
+  <div class="ranking-item">
+    <span class="rank-number"><%= i + 1 %>位</span>
+
+    <%= link_to t.hot_springs, tweet_path(t), class: "ranking-name" %>
+
+    <span class="like-count">
+      <%= t.liked_users.count %>
+    </span>
+  </div>
+<% end %>
+
 
 </div>
+
 
 
 

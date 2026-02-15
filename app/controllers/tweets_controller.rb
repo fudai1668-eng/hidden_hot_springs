@@ -27,16 +27,27 @@ class TweetsController < ApplicationController
   end
 
   # ✅ ★★★ これを追加 ★★★
-  def list
-     @tweets = Tweet.all.order(created_at: :desc)
+ def list
+  @tweets = Tweet.all.order(created_at: :desc)
+
+  @rank_tweets = Tweet.all.sort do |a, b|
+    b.liked_users.count <=> a.liked_users.count
   end
+end
+
   # ✅ ★★★★★★★★★★★★★
 
   def show
-    @tweet = Tweet.find(params[:id])
-    @comments = @tweet.comments
-    @comment = Comment.new
+  @tweet = Tweet.find(params[:id])
+
+  @comments = @tweet.comments
+  @comment = Comment.new
+
+  @rank_tweets = Tweet.all.sort do |a, b|
+    b.liked_users.count <=> a.liked_users.count
   end
+end
+
 
   def new
     @tweet = Tweet.new

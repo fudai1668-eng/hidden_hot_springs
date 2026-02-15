@@ -116,45 +116,54 @@ footer {
 
 /* ===== マイページ全体 ===== */
 .mypage-container {
-  max-width: 900px;
+  max-width: 1200px; /* 横並び用に少し広げる */
   margin: 40px auto;
   padding: 20px;
-  font-size: 18px; /* ← 基本サイズ（ここを変えれば全体が連動） */
+  font-size: 18px;
 }
 
-/* ===== 見出し（あなたの投稿） ===== */
+/* ===== 見出し ===== */
 .subtitle {
-  font-size: 75px; /* ← 調整可能 */
+  font-size: 75px;
   font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* ===== 投稿一覧エリア ===== */
-.tweet-list {
   margin-bottom: 30px;
-   font-size: 50px; 
+  text-align: center;
 }
 
-/* ===== 1つの投稿カード ===== */
+/* ===== 投稿一覧（ここが重要） ===== */
+.tweet-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ← 3列 */
+  gap: 30px; /* カード間の余白 */
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+/* ===== 投稿カード ===== */
 .tweet-card {
   background: #fff;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  font-size: 50px; /* ← 投稿本文の基本サイズ */
+  padding: 30px 50px; /* ← 横を広く */
+  border-radius: 12px;
+  font-size: 50px;
+  min-height: 200px;  /* ← 高さは低めに */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: left; 
+  white-space: nowrap;
 }
+
 
 /* ===== 投稿者名 ===== */
 .tweet-user {
   font-weight: bold;
-  font-size: 22px; /* ← 大きめ */
+  font-size: 22px;
 }
 
 /* ===== 投稿日時 ===== */
 .tweet-date {
-  font-size: 16px; /* ← 小さめ */
+  font-size: 16px;
   color: gray;
 }
+
 
 /* ===== マイページのProfile部分 ===== */
 

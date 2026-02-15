@@ -65,11 +65,12 @@
     <hr>
 
     <h2 class="ranking-title">いいねしたユーザー</h2>
-    <ul class="liked-users">
-      <% @tweet.liked_users.each do |user| %>
-        <li><%= user.email %></li>
-      <% end %>
-    </ul>
+<ul class="liked-users">
+  <% @tweet.liked_users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
+
     
 
     <hr>
@@ -117,12 +118,23 @@
 </div>
 
 
-  </div>
-</div>
 
 
   
 
-  <h2 class="ranking-title">人気Tweetランキング</h2>
+  <h2 class="ranking-title">♨人気温泉ランキング♨</h2>
+
+<% @rank_tweets.each_with_index do |t, i| %>
+  <div class="ranking-item">
+    <span class="rank-number"><%= i + 1 %>位</span>
+
+    <%= link_to t.hot_springs, tweet_path(t), class: "ranking-name" %>
+
+    <span class="like-count">
+      <%= t.liked_users.count %>
+    </span>
+  </div>
+<% end %>
+
 
 </div>
