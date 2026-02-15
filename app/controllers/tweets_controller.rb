@@ -35,7 +35,6 @@ class TweetsController < ApplicationController
   end
 end
 
-  # ✅ ★★★★★★★★★★★★★
 
   def show
   @tweet = Tweet.find(params[:id])
@@ -58,7 +57,7 @@ end
     tweet.user_id = current_user.id
 
     if tweet.save
-      redirect_to tweets_path
+      redirect_to tweets_list_path
     else
       render :new
     end
