@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'new', media: "all" %>
 
 <div class="post-container">
-  <h1>Hidden_hot_springs</h1>
+  <h1>ええ湯めぐり案内所</h1>
   <h3>新規投稿ページ</h3>
 
   <%= form_for @tweet do |f| %>
@@ -28,10 +28,6 @@
       <%= f.text_area :explain, size: "30x3" %>
     </div>
 
-    <div class="field">
-      <%= f.label :picture, "画像URL" %><br>
-      <%= f.text_field :picture, size: 30 %>
-    </div>
 
     <div class="field">
       <%= f.label :image, "画像アップロード" %><br>

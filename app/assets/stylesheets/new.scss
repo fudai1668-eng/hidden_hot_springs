@@ -21,3 +21,41 @@ input[type="submit"] {
   margin-top: 50px;
   margin-bottom: 30px;
 }
+
+.post-container {
+  font-size: 22px;   /* 全体の文字サイズ */
+}
+
+/* タイトル */
+.post-container h1 {
+  font-size: 75px;
+}
+
+.post-container h3 {
+  font-size: 50px;
+}
+
+/* ラベル */
+.post-container label {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* 入力欄 */
+.post-container input,
+.post-container textarea {
+  font-size: 30px;
+  padding: 8px;
+}
+
+/* ボタン */
+.post-container input[type="submit"] {
+  font-size: 22px;
+  padding: 10px 25px;
+  border-radius: 8px;
+}
+
+.post-container a {
+  font-size: 40px;   /* ← 好きな大きさに調整OK */
+  font-weight: bold;
+}
