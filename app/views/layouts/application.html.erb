@@ -13,8 +13,13 @@
 
 <body>
   <header class="top-header">
-    <div class="top-nav">
+  <div class="top-nav">
+    <% if user_signed_in? %>
+      <%= link_to "Home", user_path(current_user) %>
+    <% else %>
       <%= link_to "Home", root_path %>
+    <% end %>
+
 
       <% if user_signed_in? %>
         <%= form_with url: destroy_user_session_path,
