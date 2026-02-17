@@ -64,10 +64,11 @@ end
   end
 
   def destroy
-    tweet = Tweet.find(params[:id])
-    tweet.destroy
-    redirect_to tweets_path
-  end
+  @tweet = Tweet.find(params[:id])
+  @tweet.destroy
+  redirect_to tweets_list_path, notice: "投稿を削除しました"
+end
+
 
   private
 
