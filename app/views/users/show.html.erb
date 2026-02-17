@@ -3,90 +3,91 @@
   <h1 class="site-title">ええ湯めぐり案内所</h1>
   <h2 class="subtitle">あなたの投稿</h2>
 
-<div class="tweet-list">
-  <% if @tweets.any? %>
-    <% @tweets.each do |tweet| %>
-      <div class="tweet-card">
-        <p><strong>温泉名：</strong><%= tweet.hot_springs %></p>
-        <p><strong>場所：</strong><%= tweet.place %></p>
-        <p><strong>誕生年：</strong><%= tweet.birth %></p>
-        <p><strong>説明：</strong><%= tweet.explain %></p>
-        <p class="tweet-date">
-          投稿日：<%= tweet.created_at.strftime("%Y/%m/%d") %>
-        </p>
+  <div class="tweet-list">
+    <% if @tweets.any? %>
+      <% @tweets.each do |tweet| %>
+        <div class="tweet-card">
 
-        <% if user_signed_in? && current_user == tweet.user %>
-          <%= button_to "削除する",
-                tweet_path(tweet),
-                method: :delete,
-                data: { turbo_confirm: "本当に削除しますか？" },
-                class: "delete-btn" %>
-        <% end %>
+          <p>
+            <strong>温泉名：</strong>
+            <%= link_to tweet.hot_springs, tweet_path(tweet) %>
+          </p>
 
-      </div>
+          <p><strong>場所：</strong><%= tweet.place %></p>
+          <p><strong>誕生年：</strong><%= tweet.birth %></p>
+
+          <p class="tweet-date">
+            投稿日：<%= tweet.created_at.strftime("%Y/%m/%d") %>
+          </p>
+
+          <% if user_signed_in? && current_user == tweet.user %>
+            <%= button_to "削除する",
+                  tweet_path(tweet),
+                  method: :delete,
+                  data: { turbo_confirm: "本当に削除しますか？" },
+                  class: "delete-btn" %>
+          <% end %>
+
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだ投稿がありません。</p>
     <% end %>
-  <% else %>
-    <p>まだ投稿がありません。</p>
-  <% end %>
-</div>
+  </div>
 
-
-<hr>
+  <hr>
 
   <p class="subtitle">あなたのコメント</p>
 
-<div class="tweet-list">
-  <% if @comments.any? %>
-    <% @comments.each do |c| %>
-      <div class="tweet-card">
+  <div class="tweet-list">
+    <% if @comments.any? %>
+      <% @comments.each do |c| %>
+        <div class="tweet-card">
 
-        <p>
-          <strong>温泉名：</strong>
-          <%= link_to c.tweet.hot_springs, tweet_path(c.tweet) %>
-        </p>
+          <p>
+            <strong>温泉名：</strong>
+            <%= link_to c.tweet.hot_springs, tweet_path(c.tweet) %>
+          </p>
 
-        <p>
-          <strong>内容：</strong>
-          <%= c.content %>
-        </p>
+          <p><strong>内容：</strong><%= c.content %></p>
 
-        <p class="tweet-date">
-          コメント日：<%= c.created_at.strftime("%Y/%m/%d") %>
-        </p>
+          <p class="tweet-date">
+            コメント日：<%= c.created_at.strftime("%Y/%m/%d") %>
+          </p>
 
-        <% if user_signed_in? && current_user == c.user %>
-          <%= button_to "削除する",
-                tweet_comment_path(c.tweet, c),
-                method: :delete,
-                data: { turbo_confirm: "本当に削除しますか？" },
-                class: "delete-btn" %>
-        <% end %>
+          <% if user_signed_in? && current_user == c.user %>
+            <%= button_to "削除する",
+                  tweet_comment_path(c.tweet, c),
+                  method: :delete,
+                  data: { turbo_confirm: "本当に削除しますか？" },
+                  class: "delete-btn" %>
+          <% end %>
 
-      </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだコメントがありません。</p>
     <% end %>
-  <% else %>
-    <p>まだコメントがありません。</p>
-  <% end %>
-</div>
-
+  </div>
 
   <hr>
 
   <h1 class="profile-title">Profile</h1>
 
-<div class="profile-box">
-  <p class="profile-name">名前：<%= @user.name %></p>
-  <p class="profile-email">メールアドレス：<%= @user.email %></p>
-  <p class="profile-text">プロフィール：<%= @user.profile %></p>
+  <div class="profile-box">
+    <p class="profile-name">名前：<%= @user.name %></p>
+    <p class="profile-email">メールアドレス：<%= @user.email %></p>
+    <p class="profile-text">プロフィール：<%= @user.profile %></p>
 
-  <% if user_signed_in? && current_user.id == @user.id %>
-    <%= link_to "編集する", edit_user_registration_path, class: "edit-btn" %>
-  <% end %>
+    <% if user_signed_in? && current_user.id == @user.id %>
+      <%= link_to "編集する", edit_user_registration_path, class: "edit-btn" %>
+    <% end %>
 
-  <div class="button-area">
-  <%= link_to "一覧へ", tweets_list_path, class: "back-link" %>
-  <%= link_to "新規投稿へ", new_tweet_path, class: "back-link" %>
-</div>
+    <div class="button-area">
+      <%= link_to "一覧へ", tweets_list_path, class: "back-link" %>
+      <%= link_to "新規投稿へ", new_tweet_path, class: "back-link" %>
+    </div>
 
+  </div>
 
 </div>
