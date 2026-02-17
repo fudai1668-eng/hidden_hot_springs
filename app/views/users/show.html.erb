@@ -8,18 +8,28 @@
     <% @tweets.each do |tweet| %>
       <div class="tweet-card">
         <p><strong>温泉名：</strong><%= tweet.hot_springs %></p>
-         <p><strong>場所：</strong><%= tweet.place %></p>
+        <p><strong>場所：</strong><%= tweet.place %></p>
         <p><strong>誕生年：</strong><%= tweet.birth %></p>
         <p><strong>説明：</strong><%= tweet.explain %></p>
         <p class="tweet-date">
           投稿日：<%= tweet.created_at.strftime("%Y/%m/%d") %>
         </p>
+
+        <% if user_signed_in? && current_user == tweet.user %>
+          <%= button_to "削除する",
+                tweet_path(tweet),
+                method: :delete,
+                data: { turbo_confirm: "本当に削除しますか？" },
+                class: "delete-btn" %>
+        <% end %>
+
       </div>
     <% end %>
   <% else %>
     <p>まだ投稿がありません。</p>
   <% end %>
 </div>
+
 
 <hr>
 
